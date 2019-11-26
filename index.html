@@ -1,0 +1,100 @@
+<html lang=zh-CN>
+
+<head>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/gaowanliang/p/img/gs.png" type="image/x-icon" />
+    <title>LaTeX2MathML</title>
+    <script src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<style>
+    input {
+        margin-top: .7em
+    }
+
+    .output {
+        border: 1px solid black;
+    }
+
+    .box {
+        position: relative
+    }
+
+    footer {
+        position: fixed;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 50px;
+        background-color: #eee;
+        z-index: 9999;
+        padding-bottom: 5px;
+    }
+</style>
+
+<body>
+
+    <script>
+        (function () {
+            var QUEUE = MathJax.Hub.queue;
+            var math = null, box = null;
+            var HIDEBOX = function () { box.style.visibility = "hidden" }
+            var SHOWBOX = function () { box.style.visibility = "visible" }
+            QUEUE.Push(function () {
+                math = MathJax.Hub.getAllJax("MathOutput")[0];
+                box = document.getElementById("box");
+                SHOWBOX();
+            });
+            window.UpdateMath = function (TeX) {
+                TeX = TeX.replace(/\$/g, "")
+                QUEUE.Push(
+                    HIDEBOX,
+                    ["resetEquationNumbers", MathJax.InputJax.TeX],
+                    ["Text", math, "\\displaystyle{" + TeX + "}"],
+                    SHOWBOX
+                );
+            }
+        })();
+    </script>
+    <div class="mdui-container">
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">输入一些\(\rm\TeX\)代码并按回车:</label>
+            <input class="mdui-textfield-input" id="MathInput"
+                value="f\left(x_{1},x_{2}\right)=\frac{1}{2\pi\sigma_{1}\sigma_{2}\sqrt{1-\rho^{2}}}\mathrm{e}^{-\frac{1}{2\left(1-\rho^{2}\right)}\left[\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)^{2}-2\rho\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)+\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)^{2}\right]}"
+                onchange="UpdateMath(this.value)" />
+        </div>
+        <div class="mdui-float-right">
+            <button class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-grey-900 mdui-ripple"
+                onclick="clean()">清空</button>
+        </div>
+        <div>
+            <br>
+            <p class="mdui-typo-headline-opacity">结果:</p>
+            <div class="box" id="box" style="visibility:hidden">
+                <div id="MathOutput" class="output">
+                    $${f\left(x_{1},x_{2}\right)=\frac{1}{2\pi\sigma_{1}\sigma_{2}\sqrt{1-\rho^{2}}}\mathrm{e}^{-\frac{1}{2\left(1-\rho^{2}\right)}\left[\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)^{2}-2\rho\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)+\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)^{2}\right]}}$$
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="mdui-center mdui-text-center">
+        <p class="mdui-typo-caption-opacity">一个将LaTeX方便的转换为MathML的工具</p>
+        <p class="mdui-typo-caption-opacity">Made by:高玩梁 Powered by:<a href="https://www.mathjax.org/"
+                target="_blank">MathJax™</p>
+    </footer>
+    <script>
+        function clean() {
+            $("#MathInput").val("")
+        }
+        if (MathJax.Hub.Browser.isMSIE) {
+            MathInput.onkeypress = function () {
+                if (window.event && window.event.keyCode === 13) { this.blur(); this.focus() }
+            }
+        }
+    </script>
+    <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+</body>
+
+</html>
