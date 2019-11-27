@@ -60,8 +60,7 @@
         <div class="mdui-textfield mdui-textfield-floating-label">
             <label class="mdui-textfield-label">输入一些\(\rm\TeX\)代码并按回车:</label>
             <input class="mdui-textfield-input" id="MathInput"
-                value="f\left(x_{1},x_{2}\right)=\frac{1}{2\pi\sigma_{1}\sigma_{2}\sqrt{1-\rho^{2}}}\mathrm{e}^{-\frac{1}{2\left(1-\rho^{2}\right)}\left[\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)^{2}-2\rho\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)+\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)^{2}\right]}"
-                onchange="UpdateMath(this.value)" />
+                value="P_{i}=\left[\begin{array}{c|c|c}{\cos \theta_{i 1}} & {\cos \theta_{i 2}} & {\ldots} & {\cos \theta_{i n}} \\ {\sin \theta_{i 1}} & {\sin \theta_{i 2}} & {\cdots} & {\sin \theta_{i n}}\end{array}\right]"
         </div>
         <div class="mdui-float-right">
             <button class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-grey-900 mdui-ripple"
@@ -72,7 +71,7 @@
             <p class="mdui-typo-headline-opacity">结果:</p>
             <div class="box" id="box" style="visibility:hidden">
                 <div id="MathOutput" class="output">
-                    $${f\left(x_{1},x_{2}\right)=\frac{1}{2\pi\sigma_{1}\sigma_{2}\sqrt{1-\rho^{2}}}\mathrm{e}^{-\frac{1}{2\left(1-\rho^{2}\right)}\left[\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)^{2}-2\rho\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)+\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)^{2}\right]}}$$
+                    $$P_{i}=\left[\begin{array}{c|c|c}{\cos \theta_{i 1}} & {\cos \theta_{i 2}} & {\ldots} & {\cos \theta_{i n}} \\ {\sin \theta_{i 1}} & {\sin \theta_{i 2}} & {\cdots} & {\sin \theta_{i n}}\end{array}\right]$$
                 </div>
             </div>
         </div>
