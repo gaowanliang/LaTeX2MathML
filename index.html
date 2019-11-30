@@ -3,7 +3,7 @@
 <head>
     <meta name=viewport content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/gaowanliang/p/img/gs.png" type="image/x-icon" />
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/gaowanliang/p/img/gs.png" type="image/x-icon" />
     <title>LaTeX2MathML</title>
     <script src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
@@ -60,7 +60,8 @@
         <div class="mdui-textfield mdui-textfield-floating-label">
             <label class="mdui-textfield-label">输入一些\(\rm\TeX\)代码并按回车:</label>
             <input class="mdui-textfield-input" id="MathInput"
-                value="P_{i}=\left[\begin{array}{c|c|c}{\cos \theta_{i 1}} & {\cos \theta_{i 2}} & {\ldots} & {\cos \theta_{i n}} \\ {\sin \theta_{i 1}} & {\sin \theta_{i 2}} & {\cdots} & {\sin \theta_{i n}}\end{array}\right]"
+                value="f(a)=\frac{1}{2 \pi i} \oint_{\gamma} \frac{f(z)}{z-a} d z"
+                onchange="UpdateMath(this.value)" />
         </div>
         <div class="mdui-float-right">
             <button class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-grey-900 mdui-ripple"
@@ -71,7 +72,9 @@
             <p class="mdui-typo-headline-opacity">结果:</p>
             <div class="box" id="box" style="visibility:hidden">
                 <div id="MathOutput" class="output">
-                    $$P_{i}=\left[\begin{array}{c|c|c}{\cos \theta_{i 1}} & {\cos \theta_{i 2}} & {\ldots} & {\cos \theta_{i n}} \\ {\sin \theta_{i 1}} & {\sin \theta_{i 2}} & {\cdots} & {\sin \theta_{i n}}\end{array}\right]$$
+                    $$
+                    f(a)=\frac{1}{2 \pi i} \oint_{\gamma} \frac{f(z)}{z-a} d z
+                    $$
                 </div>
             </div>
         </div>
